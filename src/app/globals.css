@@ -111,7 +111,7 @@ body {
 
 /* ---- Buttons ---- */
 .btn-neon-pink {
-  background: transparent;
+  background: rgba(20, 0, 35, 0.95);
   border: 1.5px solid var(--pink);
   color: var(--pink);
   text-shadow: 0 0 8px var(--pink);
@@ -199,7 +199,9 @@ body {
   background: rgba(0, 0, 0, 0.75);
   z-index: 50;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
   backdrop-filter: blur(4px);
 }
 

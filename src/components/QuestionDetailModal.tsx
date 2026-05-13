@@ -12,8 +12,8 @@ export default function QuestionDetailModal({ question, onClose }: Props) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
-        className="glass-card w-full rounded-t-2xl p-5 pb-10"
-        style={{ border: "1px solid #00ffff40", boxShadow: "0 -4px 40px #00ffff20" }}
+        className="glass-card w-full rounded-2xl p-5 pb-6 max-h-[85vh] overflow-y-auto"
+        style={{ border: "1px solid #00ffff40", boxShadow: "0 0 40px #00ffff20" }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

@@ -36,8 +36,8 @@ export default function AddQuestionModal({ onClose, onAdd }: Props) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
-        className="glass-card w-full rounded-t-2xl p-5 pb-8"
-        style={{ border: "1px solid #9333ea60", boxShadow: "0 -4px 40px #9333ea30" }}
+        className="glass-card w-full rounded-2xl p-5 pb-6 max-h-[85vh] overflow-y-auto"
+        style={{ border: "1px solid #9333ea60", boxShadow: "0 0 40px #9333ea30" }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-4">
