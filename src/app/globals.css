@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #0a0014;
+  --cyan: #00ffff;
+  --pink: #ff2d78;
+  --purple: #9333ea;
+  --magenta: #ff00ff;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg);
+  color: #e0e0ff;
+  font-family: 'Rajdhani', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ---- Synthwave Grid Background ---- */
+.synthwave-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.grid-horizon {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300%;
+  height: 60%;
+  background:
+    linear-gradient(to bottom, transparent 0%, #1a003a88 60%, #2a005a 100%);
+}
+
+.grid-lines {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) perspective(300px) rotateX(70deg);
+  transform-origin: bottom center;
+  width: 300%;
+  height: 120%;
+  background-image:
+    linear-gradient(to bottom, transparent 50%, #ff00ff30 50%),
+    linear-gradient(to right, #ff00ff30 1px, transparent 1px);
+  background-size: 60px 60px, 60px 60px;
+  animation: gridScroll 4s linear infinite;
+}
+
+@keyframes gridScroll {
+  0%   { background-position: 0 0, 0 0; }
+  100% { background-position: 0 60px, 0 0; }
+}
+
+.sun-glow {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff8c00 0%, #ff2d78 40%, transparent 70%);
+  opacity: 0.25;
+  filter: blur(20px);
+}
+
+/* ---- Neon Text ---- */
+.neon-cyan {
+  color: var(--cyan);
+  text-shadow: 0 0 10px var(--cyan), 0 0 30px var(--cyan), 0 0 60px #00ffff80;
+}
+
+.neon-pink {
+  color: var(--pink);
+  text-shadow: 0 0 10px var(--pink), 0 0 30px var(--pink);
+}
+
+.neon-purple {
+  color: var(--purple);
+  text-shadow: 0 0 10px var(--purple), 0 0 30px var(--purple);
+}
+
+/* ---- Cards ---- */
+.glass-card {
+  background: rgba(15, 0, 40, 0.82);
+  border: 1px solid #ff2d7840;
+  box-shadow: 0 0 0 1px #ff2d7828, 0 0 24px #ff2d7818;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.glass-card:hover {
+  border-color: #ff2d7870;
+  box-shadow: 0 0 0 1px #ff2d7840, 0 0 32px #ff2d7830;
+}
+
+/* ---- Buttons ---- */
+.btn-neon-pink {
+  background: transparent;
+  border: 1.5px solid var(--pink);
+  color: var(--pink);
+  text-shadow: 0 0 8px var(--pink);
+  box-shadow: 0 0 10px #ff2d7840, inset 0 0 10px #ff2d7810;
+  transition: all 0.2s;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.btn-neon-pink:hover, .btn-neon-pink:active {
+  background: #ff2d7818;
+  box-shadow: 0 0 20px #ff2d7860, inset 0 0 20px #ff2d7820;
+}
+
+.btn-neon-cyan {
+  background: transparent;
+  border: 1.5px solid var(--cyan);
+  color: var(--cyan);
+  text-shadow: 0 0 8px var(--cyan);
+  box-shadow: 0 0 10px #00ffff40, inset 0 0 10px #00ffff10;
+  transition: all 0.2s;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.btn-neon-cyan:hover, .btn-neon-cyan:active {
+  background: #00ffff18;
+  box-shadow: 0 0 20px #00ffff60, inset 0 0 20px #00ffff20;
+}
+
+.btn-neon-cyan.active {
+  background: #00ffff18;
+  box-shadow: 0 0 20px #00ffff60, inset 0 0 20px #00ffff20;
+}
+
+.btn-neon-pink.active {
+  background: #ff2d7818;
+  box-shadow: 0 0 20px #ff2d7860, inset 0 0 20px #ff2d7820;
+}
+
+/* ---- Like button ---- */
+.like-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid #ff2d7840;
+  border-radius: 20px;
+  padding: 4px 12px;
+  color: #ff2d78aa;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.like-btn:hover, .like-btn:active {
+  border-color: #ff2d78;
+  color: #ff2d78;
+  box-shadow: 0 0 12px #ff2d7840;
+}
+
+.like-btn.liked {
+  border-color: #ff2d78;
+  color: #ff2d78;
+  box-shadow: 0 0 12px #ff2d7840;
+}
+
+/* ---- Category badge ---- */
+.category-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid #9333ea80;
+  color: #c084fc;
+  text-shadow: 0 0 6px #9333ea;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Modal overlay ---- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  backdrop-filter: blur(4px);
+}
+
+/* ---- Filter scrollbar hide ---- */
+.scroll-hide::-webkit-scrollbar { display: none; }
+.scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ---- Input ---- */
+.neon-input {
+  background: rgba(10, 0, 30, 0.9);
+  border: 1px solid #9333ea80;
+  color: #e0e0ff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.neon-input:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 1px #00ffff30, 0 0 12px #00ffff20;
+}
+
+.neon-select {
+  background: rgba(10, 0, 30, 0.9);
+  border: 1px solid #9333ea80;
+  color: #e0e0ff;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.neon-select:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 1px #00ffff30;
+}
+
+/* ---- Scan line overlay (subtle) ---- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.04) 2px,
+    rgba(0, 0, 0, 0.04) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
