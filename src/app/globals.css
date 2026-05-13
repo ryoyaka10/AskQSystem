@@ -236,6 +236,61 @@ body {
   box-shadow: 0 0 0 1px #00ffff30;
 }
 
+/* ---- Like burst effect ---- */
+@keyframes like-ring-expand {
+  0%   { transform: translate(-50%, -50%) scale(0.1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(3.2); opacity: 0; }
+}
+
+@keyframes like-float-heart {
+  0%   { transform: translateX(-50%) translateY(0) scale(1.6); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(-52px) scale(0.2); opacity: 0; }
+}
+
+@keyframes like-spark-fly {
+  0%   { opacity: 1; transform: rotate(var(--angle)) translateY(0px) scale(1); }
+  60%  { opacity: 1; }
+  100% { opacity: 0; transform: rotate(var(--angle)) translateY(-34px) scale(0); }
+}
+
+.like-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #ff2d78;
+  box-shadow: 0 0 10px #ff2d78, 0 0 20px #ff2d7860;
+  pointer-events: none;
+  animation: like-ring-expand 0.55s ease-out forwards;
+}
+
+.like-float-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #ff2d78;
+  text-shadow: 0 0 12px #ff2d78, 0 0 24px #ff2d78;
+  font-size: 0.9rem;
+  pointer-events: none;
+  animation: like-float-heart 0.65s ease-out forwards;
+}
+
+.like-spark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: #ff2d78;
+  box-shadow: 0 0 6px #ff2d78, 0 0 12px #ff2d7880;
+  pointer-events: none;
+  animation: like-spark-fly 0.55s ease-out forwards;
+}
+
 /* ---- Scan line overlay (subtle) ---- */
 body::after {
   content: '';
