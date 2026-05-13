@@ -6,6 +6,7 @@ import QuestionCard from "@/components/QuestionCard";
 import CategoryFilter from "@/components/CategoryFilter";
 import SortToggle, { SortMode } from "@/components/SortToggle";
 import AddQuestionModal from "@/components/AddQuestionModal";
+import QuestionDetailModal from "@/components/QuestionDetailModal";
 
 export default function Home() {
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -13,6 +14,7 @@ export default function Home() {
   const [category, setCategory] = useState("全て");
   const [sort, setSort] = useState<SortMode>("id");
   const [showModal, setShowModal] = useState(false);
+  const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(null);
 
   const fetchQuestions = useCallback(async () => {
     try {
@@ -40,11 +42,11 @@ export default function Home() {
     }
   }
 
-  async function handleAdd(cat: string, content: string) {
+  async function handleAdd(cat: string, content: string, description: string) {
     const res = await fetch("/api/questions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ category: cat, content }),
+      body: JSON.stringify({ category: cat, content, description }),
     });
     if (!res.ok) throw new Error("Failed to add");
     const { question } = await res.json();
@@ -127,7 +129,7 @@ export default function Home() {
             </div>
           ) : (
             sorted.map((q) => (
-              <QuestionCard key={q.id} question={q} onLike={handleLike} />
+              <QuestionCard key={q.id} question={q} onLike={handleLike} onOpen={setSelectedQuestion} />
             ))
           )}
         </main>
@@ -145,6 +147,10 @@ export default function Home() {
 
       {showModal && (
         <AddQuestionModal onClose={() => setShowModal(false)} onAdd={handleAdd} />
+      )}
+
+      {selectedQuestion && (
+        <QuestionDetailModal question={selectedQuestion} onClose={() => setSelectedQuestion(null)} />
       )}
     </>
   );
